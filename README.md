@@ -1,16 +1,29 @@
-# React + Vite
+# AI in Computer Networks
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a modern React + Vite presentation website about the role of Artificial Intelligence in Computer Networks.
 
-Currently, two official plugins are available:
+The website explains how AI is transforming networking through:
+- Intelligent routing
+- Network automation
+- Traffic prediction
+- Cybersecurity enhancement
+- Fault detection
+- Performance optimization
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Technologies Used
+- React JSX
+- Vite
+- CSS
+- JavaScript
 
-## React Compiler
+## Features
+- Modern UI
+- Fast performance
+- Responsive design
+- Interactive presentation layout
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Developed By
+**Moiz**
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Purpose
+This website was created for educational and presentation purposes to demonstrate the impact of AI in modern computer networking systems.
