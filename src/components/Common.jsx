@@ -86,9 +86,8 @@ export function ProgressBar({ accent = "var(--accent-primary)" }) {
 /* ─── Section Wrap ─── */
 export function Section({ id, children, style = {} }) {
   return (
-    <section id={id} style={{
-      maxWidth: 1200, margin: "0 auto", padding: "120px 24px",
-      borderTop: "1px solid var(--border-subtle)", position: "relative", ...style
+    <section id={id} className="responsive-section" style={{
+      borderTop: "1px solid var(--border-subtle)", ...style
     }}>
       {children}
     </section>
@@ -123,8 +122,7 @@ export function ChapterLabel({ num, title, sub, colorClass = "gradient-text-indi
 export function Quote({ text, author, role, accent = "var(--accent-primary)" }) {
   const [ref, vis] = useInView();
   return (
-    <div ref={ref} style={{
-      margin: "56px 0", padding: "36px 44px",
+    <div ref={ref} className="responsive-quote" style={{
       borderLeft: `4px solid ${accent}`,
       background: "var(--bg-secondary)", borderRadius: "0 16px 16px 0",
       opacity: vis ? 1 : 0, transform: vis ? "none" : "translateX(-20px)",
@@ -150,8 +148,8 @@ export function Quote({ text, author, role, accent = "var(--accent-primary)" }) 
 export function StatCard({ value, suffix, label, accent = "var(--accent-primary)", delay = 0 }) {
   return (
     <Reveal delay={delay}>
-      <div className="glassmorphism card-hover" style={{
-        padding: "32px 28px", borderRadius: 20,
+      <div className="glassmorphism card-hover responsive-card" style={{
+        borderRadius: 20,
         background: "var(--bg-card)", textAlign: "center",
         boxShadow: "var(--shadow-premium)",
         border: "1px solid var(--border-subtle)"
@@ -173,9 +171,9 @@ export function InfoCard({ icon, title, text, accent = "var(--accent-primary)", 
       <div
         onMouseEnter={() => setHov(true)}
         onMouseLeave={() => setHov(false)}
-        className="glassmorphism card-hover"
+        className="glassmorphism card-hover responsive-card"
         style={{
-          padding: "32px 28px", borderRadius: 20,
+          borderRadius: 20,
           background: hov ? "var(--bg-secondary)" : "var(--bg-card)",
           boxShadow: hov ? "var(--shadow-premium), 0 0 20px var(--shadow-glow)" : "var(--shadow-premium)",
           transform: hov ? "translateY(-6px)" : "none",
@@ -200,8 +198,8 @@ export function InfoCard({ icon, title, text, accent = "var(--accent-primary)", 
 export function Callout({ label, text, accent = "var(--accent-primary)" }) {
   return (
     <Reveal>
-      <div style={{
-        margin: "40px 0", padding: "26px 32px",
+      <div className="responsive-card" style={{
+        margin: "40px 0",
         borderLeft: `4px solid ${accent}`,
         background: "var(--bg-secondary)", borderRadius: "0 16px 16px 0",
         borderTop: "1px solid var(--border-subtle)",

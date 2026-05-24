@@ -42,7 +42,6 @@ export default function Header({ theme, toggleTheme }) {
     { id: "intrusion", label: "M2: Intrusion" },
     { id: "healing", label: "M3: Healing" },
     { id: "scaling", label: "M4: Scaling" },
-    { id: "threats", label: "M5: AI Threats" }
   ];
 
   const handleSmoothScroll = (e, id) => {
@@ -63,31 +62,9 @@ export default function Header({ theme, toggleTheme }) {
   };
 
   return (
-    <header style={{
-      position: "fixed",
-      top: 0,
-      left: 0,
-      right: 0,
-      zIndex: 1000,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      padding: scrolled ? "12px 32px" : "20px 48px",
-      transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
-      background: scrolled ? "var(--bg-glass)" : "transparent",
-      backdropFilter: scrolled ? "blur(20px)" : "none",
-      WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
-      borderBottom: scrolled ? "1px solid var(--border-subtle)" : "1px solid transparent",
-      boxShadow: scrolled ? "var(--shadow-premium)" : "none"
-    }}>
+    <header className={`main-header${scrolled ? " scrolled" : ""}`}>
       {/* Branding */}
-      <a href="#hero" onClick={(e) => handleSmoothScroll(e, "hero")} style={{
-        display: "flex",
-        alignItems: "center",
-        gap: 10,
-        textDecoration: "none",
-        color: "var(--text-primary)"
-      }}>
+      <a href="#hero" onClick={(e) => handleSmoothScroll(e, "hero")} className="header-logo">
         <div style={{
           width: 38,
           height: 38,
@@ -97,31 +74,23 @@ export default function Header({ theme, toggleTheme }) {
           alignItems: "center",
           justifyContent: "center",
           color: "#fff",
-          boxShadow: "0 4px 12px var(--shadow-glow)"
+          boxShadow: "0 4px 12px var(--shadow-glow)",
+          flexShrink: 0
         }}>
           <ShieldCheck size={20} />
         </div>
-        <span style={{ 
-          fontSize: 14, 
-          fontWeight: 800, 
-          letterSpacing: 2, 
-          textTransform: "uppercase", 
-          fontFamily: "var(--font-heading)" 
-        }}>
-          AI Networks
-        </span>
+        <span className="header-logo-text">AI Networks</span>
       </a>
 
       {/* Glass Navigation Items */}
-      <nav style={{
-        display: "flex",
-        alignItems: "center",
-        gap: 6,
-        padding: "4px",
-        borderRadius: 14,
-        background: scrolled ? "rgba(var(--accent-primary-rgb), 0.03)" : "rgba(255, 255, 255, 0.05)",
-        border: "1px solid var(--border-subtle)"
-      }}>
+      <nav
+        className="nav-container"
+        style={{
+          background: scrolled
+            ? "rgba(var(--accent-primary-rgb), 0.03)"
+            : "rgba(255, 255, 255, 0.05)"
+        }}
+      >
         {links.map((link) => {
           const isActive = activeSection === link.id;
           return (
@@ -136,6 +105,7 @@ export default function Header({ theme, toggleTheme }) {
                 textDecoration: "none",
                 padding: "8px 16px",
                 borderRadius: 10,
+                whiteSpace: "nowrap",
                 transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                 background: isActive ? "var(--bg-primary)" : "transparent",
                 border: `1px solid ${isActive ? "var(--border-subtle)" : "transparent"}`,
@@ -164,6 +134,7 @@ export default function Header({ theme, toggleTheme }) {
           cursor: "pointer",
           color: "var(--text-primary)",
           boxShadow: "var(--shadow-premium)",
+          flexShrink: 0,
           transition: "transform 0.4s ease, border-color 0.3s ease"
         }}
         onMouseEnter={e => {

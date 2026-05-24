@@ -12,16 +12,21 @@ export default function SplashScreen({ onStart, theme }) {
     const ctx = canvas.getContext("2d");
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
+    // Mutable dimensions updated on every resize
+    let W = window.innerWidth;
+    let H = window.innerHeight;
+
     const setSize = () => {
       if (!canvas) return;
-      canvas.width = window.innerWidth * dpr;
-      canvas.height = window.innerHeight * dpr;
+      W = window.innerWidth;
+      H = window.innerHeight;
+      canvas.width = W * dpr;
+      canvas.height = H * dpr;
+      ctx.setTransform(1, 0, 0, 1, 0, 0); // reset before re-scaling
       ctx.scale(dpr, dpr);
     };
 
     setSize();
-    const W = window.innerWidth;
-    const H = window.innerHeight;
 
     // Scale particle count with width
     const particleCount = Math.min(Math.floor(W / 12), 100);
@@ -98,7 +103,6 @@ export default function SplashScreen({ onStart, theme }) {
     { n: 2, name: "Muhammad Ahtisham", topic: "Intrusion Detection", color: "var(--accent-member-2)" },
     { n: 3, name: "Ahmad Bin Javed", topic: "Self-Healing & SON", color: "var(--accent-member-3)" },
     { n: 4, name: "Eman Shahid", topic: "Predictive Scaling", color: "var(--accent-member-4)" },
-    { n: 5, name: "Member Five", topic: "AI Threat Vectors", color: "var(--accent-member-5)" }
   ];
 
   return (
@@ -109,9 +113,12 @@ export default function SplashScreen({ onStart, theme }) {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      justifyContent: "center",
-      background: "linear-gradient(135deg, #02050a 0%, #050d15 100%)", // Pure dark theme
-      overflow: "hidden",
+      justifyContent: "flex-start",  /* Don't center — let content start at top so it's never clipped */
+      background: "linear-gradient(135deg, #02050a 0%, #050d15 100%)",
+      overflowY: "auto",             /* Scrollable when content taller than viewport */
+      overflowX: "hidden",
+      WebkitOverflowScrolling: "touch", /* Smooth momentum scrolling on iOS */
+      padding: "60px 16px",          /* Breathing room on all sides */
       transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
       transform: exiting ? "translateY(-100%) scale(0.98)" : "translateY(0) scale(1)",
       opacity: exiting ? 0 : 1
@@ -138,17 +145,18 @@ export default function SplashScreen({ onStart, theme }) {
         zIndex: 1
       }} />
 
-      {/* Main Content Layout */}
+      {/* Main Content Layout — auto margins center it vertically on tall screens */}
       <div style={{
         position: "relative",
         zIndex: 10,
         maxWidth: 1000,
-        width: "90%",
+        width: "100%",
         textAlign: "center",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        gap: 40
+        gap: 40,
+        margin: "auto 0"  /* Pushes content to vertical center on large screens */
       }}>
         {/* Badge header */}
         <div style={{

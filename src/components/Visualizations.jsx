@@ -194,7 +194,7 @@ export function IDSFlowchart() {
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
         {rows.map((row, ri) => (
-          <div key={ri} style={{ display: "flex", alignItems: "stretch", gap: 16, flexDirection: "row", flexWrap: "wrap" }}>
+          <div key={ri} className="ids-row">
             <div style={{
               width: 180, padding: "20px 24px", background: "var(--bg-tertiary)", borderRadius: 16,
               display: "flex", alignItems: "center", justifyContent: "center",
@@ -204,7 +204,7 @@ export function IDSFlowchart() {
             }}>
               <span style={{ fontSize: 13, fontWeight: 800, color: "var(--text-primary)", letterSpacing: 0.5, textAlign: "center" }}>{row.label}</span>
             </div>
-            <div style={{ display: "flex", flex: 1, gap: 12, minWidth: 300 }}>
+            <div className="ids-items-container">
               {row.items.map((item, ii) => (
                 <div key={ii} className="glassmorphism card-hover" style={{
                   flex: 1, padding: "18px 20px", background: "var(--bg-card)",
@@ -251,11 +251,11 @@ export function HealingLoop() {
       <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", color: "var(--text-muted)", marginBottom: 28 }}>
         Autonomic Closed-Loop Healing Cycle
       </div>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, flexWrap: "wrap" }}>
+      <div className="healing-container">
         {steps.map((s, i) => {
           const isActive = activeStep === i;
           return (
-            <div key={i} style={{ display: "flex", alignItems: "center" }}>
+            <div key={i} className="healing-card-wrapper">
               <div className="glassmorphism" style={{
                 width: 220, padding: "28px 20px", borderRadius: 20, textAlign: "center",
                 background: isActive ? s.activeColor : "var(--bg-card)",
@@ -283,12 +283,10 @@ export function HealingLoop() {
                 </div>
               </div>
               {i < steps.length - 1 && (
-                <div style={{
-                  padding: "0 8px", fontSize: 24,
-                  color: isActive ? "var(--text-primary)" : "var(--text-muted)",
-                  transition: "color 0.4s",
-                  display: "flex", alignItems: "center"
-                }}>→</div>
+                <div
+                  className="healing-arrow"
+                  style={{ color: isActive ? "var(--text-primary)" : "var(--text-muted)" }}
+                >→</div>
               )}
             </div>
           );
@@ -383,7 +381,7 @@ export function BarChart({ title, bars, height = 220 }) {
   return (
     <div ref={ref} style={{ margin: "48px 0" }}>
       <div style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", marginBottom: 28, letterSpacing: -0.2 }}>{title}</div>
-      <div style={{ display: "flex", alignItems: "flex-end", gap: 24, height, paddingBottom: 8, borderBottom: "1px solid var(--border-subtle)" }}>
+      <div className="bar-chart-container" style={{ height }}>
         {bars.map((b, i) => (
           <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", height: "100%" }}>
             <div style={{ fontSize: 12, fontWeight: 800, color: b.color || "var(--accent-primary)", marginBottom: 8 }}>
@@ -414,12 +412,7 @@ export function BarChart({ title, bars, height = 220 }) {
 export function StudentBadge({ num, name, topic, colorClass = "gradient-text-indigo", accent = "var(--accent-member-1)" }) {
   return (
     <Reveal>
-      <div className="glassmorphism animate-float" style={{
-        display: "flex", alignItems: "center", gap: 20, marginBottom: 56,
-        padding: "24px 32px", background: "var(--bg-secondary)", borderRadius: 24,
-        border: `1.5px solid var(--border-subtle)`,
-        boxShadow: "var(--shadow-premium)"
-      }}>
+      <div className="glassmorphism animate-float student-badge">
         <div style={{
           width: 56, height: 56, borderRadius: "50%", background: accent,
           display: "flex", alignItems: "center", justifyContent: "center",
@@ -435,11 +428,7 @@ export function StudentBadge({ num, name, topic, colorClass = "gradient-text-ind
             Session Scope: <span className={colorClass} style={{ fontWeight: 700 }}>{topic}</span>
           </div>
         </div>
-        <div style={{ 
-          marginLeft: "auto", fontSize: 12, color: "var(--text-muted)", fontWeight: 700, 
-          background: "var(--bg-tertiary)", padding: "8px 14px", borderRadius: 10, 
-          border: "1px solid var(--border-subtle)", display: "flex", alignItems: "center", gap: 6 
-        }}>
+        <div className="student-badge-time">
           <Clock size={12} style={{ color: "var(--accent-primary)" }} />
           <span>Est: 4-5 min</span>
         </div>
