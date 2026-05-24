@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import SplashScreen from "./components/SplashScreen";
+import selfScaling from "../src/assets/self_scaling.png";
+import selfHealing from "../src/assets/self_healing.png";
+import ids from "../src/assets/ids.png";
+import b4 from "../src/assets/b4.png";
 import {
   ProgressBar,
   Section,
@@ -221,7 +225,7 @@ export default function App() {
           text="Google runs a massive global network called B4 connecting all international data facilities. Historically, links stayed at 30-40% operational thresholds to absorb spikes (highly inefficient). Deploying real-time traffic forecasting raised fiber utility to 95%+, saving billions in unneeded physical capital outlays."
         />
         <div className="b4-image-wrapper">
-          <img src="src/assets/b4.png" alt="Google B4 Architecture" />
+          <img src={b4} alt="Google B4 Architecture" />
         </div>
 
         <Quote
@@ -297,7 +301,7 @@ export default function App() {
           height={200}
         />
         <div className="b4-image-wrapper">
-          <img src="src/assets/ids.png" alt="Google B4 Architecture" />
+          <img src={ids} alt="Google B4 Architecture" />
         </div>
 
         <Callout
@@ -418,7 +422,7 @@ export default function App() {
         </div>
 
         <div className="b4-image-wrapper">
-          <img src="src/assets/self_healing.png" alt="Google B4 Architecture" />
+          <img src={selfHealing} alt="Google B4 Architecture" />
         </div>
 
         <Quote
@@ -682,7 +686,7 @@ export default function App() {
         />
 
         <div className="b4-image-wrapper">
-          <img src="src/assets/self_scaling.png" alt="Google B4 Architecture" />
+          <img src={selfScaling} alt="Google B4 Architecture" />
         </div>
 
         <Callout
