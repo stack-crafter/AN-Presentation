@@ -122,13 +122,7 @@ export default function App() {
             </h1>
           </Reveal>
 
-          <Reveal delay={0.25}>
-            <p style={{
-              fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.8, maxWidth: 660, margin: "0 auto 48px"
-            }}>
-              A comprehensive survey of telemetry-driven congestion prediction, autonomic self-healing frameworks, predictive scaling, and the rising horizon of adversarial threat models in network architectures.
-            </p>
-          </Reveal>
+
 
           {/* 4 Presenter badging capsules */}
           <Reveal delay={0.35}>
@@ -158,25 +152,60 @@ export default function App() {
             </div>
           </Reveal>
 
+          <Reveal delay={0.25}>
+            <p style={{
+              fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.8, maxWidth: 660, margin: "0 auto 48px"
+            }}>
+              A comprehensive survey of telemetry-driven congestion prediction, autonomic self-healing frameworks, predictive scaling, and the rising horizon of adversarial threat models in network architectures.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.25}>
+            <div
+              style={{
+                fontSize: "1.15rem",
+                color: "var(--text-secondary)",
+                lineHeight: 1.8,
+                maxWidth: 660,
+                margin: "0 auto 48px",
+                textAlign: "left",
+              }}
+            >
+              <h3 style={{ marginBottom: "16px" }}>
+                Why AI is Needed in Computer Networks?
+              </h3>
+
+              <p>
+                <strong>Traditional networks are becoming difficult to manage because:</strong>
+              </p>
+
+              <ul
+                style={{
+                  paddingLeft: "20px",
+                  marginTop: "10px",
+                  marginBottom: "20px",
+                }}
+              >
+                <li>Huge traffic volume</li>
+                <li>Millions of connected devices</li>
+                <li>IoT growth</li>
+                <li>Cloud computing</li>
+                <li>Advanced cyber attacks</li>
+                <li>Human management limitations</li>
+              </ul>
+
+              <p>
+                The survey paper highlights that modern cyber threats evolve rapidly,
+                and traditional rule-based systems struggle to detect new attacks.
+                AI-based systems improve adaptability, scalability, and detection
+                accuracy by learning from network behavior and identifying patterns
+                that humans or traditional systems may miss.
+              </p>
+            </div>
+          </Reveal>
+
           {/* Premium Home Stat Row */}
-          <div style={{
-            display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 2,
-            background: "var(--border-subtle)", border: "1px solid var(--border-subtle)", borderRadius: 24,
-            overflow: "hidden", boxShadow: "var(--shadow-premium)", animation: "reveal-up 1.2s ease"
-          }}>
-            {[
-              { v: 94, s: "%", l: "Traffic Prediction Accuracy" },
-              { v: 197, s: "d", l: "Avg Traditional Breach Detection" },
-              { v: 40, s: "%", l: "Fewer Network Outages with AI" },
-              { v: 7, s: "/9", l: "Active AI Systems Bypassed" },
-            ].map((st, i) => (
-              <div key={i} style={{ background: "var(--bg-card)", padding: "28px 20px", textAlign: "center" }}>
-                <div style={{ fontSize: 34, fontWeight: 800, color: "var(--accent-primary)", letterSpacing: -1, lineHeight: 1 }}>
-                  <StatCard value={st.v} suffix={st.s} label={st.l} accent="var(--text-primary)" delay={i * 0.1} />
-                </div>
-              </div>
-            ))}
-          </div>
+
         </div>
 
         <div style={{ position: "absolute", bottom: 32, display: "flex", flexDirection: "column", alignItems: "center", gap: 8, color: "var(--text-muted)", fontSize: 11, letterSpacing: 1.5, fontWeight: 800 }}>
@@ -252,6 +281,56 @@ export default function App() {
           Machine learning helps IDS identify threats in real-time by analyzing traffic patterns, login activity, and data movement.
           Instead of waiting for damage to happen, the system predicts dangerous behavior early and alerts security teams immediately.
         </P>
+
+        <Reveal delay={0.25}>
+          <div
+            style={{
+              fontSize: "1.15rem",
+              color: "var(--text-secondary)",
+              lineHeight: 1.8,
+              margin: "0 0 48px 0",
+              textAlign: "left",
+              width: "100%",
+            }}
+          >
+            <h3
+              style={{
+                marginBottom: "16px",
+                color: "var(--text-primary)",
+              }}
+            >
+              Why IDS is Important?
+            </h3>
+
+            <p style={{ marginBottom: "12px" }}>
+              <strong>Cyber attacks are increasing rapidly:</strong>
+            </p>
+
+            <ul
+              style={{
+                paddingLeft: "24px",
+                marginBottom: "20px",
+                lineHeight: "1.9",
+              }}
+            >
+              <li>Malware</li>
+              <li>Ransomware</li>
+              <li>Distributed Denial of Service (DDoS)</li>
+              <li>Zero-Day Attacks</li>
+              <li>Insider Threats</li>
+              <li>Advanced Persistent Threats (APT)</li>
+            </ul>
+
+            <p>
+              The survey paper emphasizes that modern cyber threats are becoming more
+              sophisticated and constantly evolving. Traditional signature-based
+              security systems often fail to detect new attacks, whereas AI-powered
+              Intrusion Detection Systems can identify both known and previously unseen
+              threats by learning network behavior and recognizing anomalies in real
+              time.
+            </p>
+          </div>
+        </Reveal>
 
         <IDSFlowchart />
 

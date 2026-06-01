@@ -5,24 +5,24 @@ import { Activity, Cpu, ShieldCheck, Zap, Server, ChevronRight, AlertTriangle, S
 /* ─── Infinite Loop Backdrop Particle Matrix ─── */
 export function NetworkCanvas({ height = 250, isDark = true }) {
   const canvasRef = useRef(null);
-  
+
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    
+
     const setSize = () => {
       if (!canvas) return;
       canvas.width = canvas.offsetWidth * dpr;
       canvas.height = height * dpr;
       ctx.scale(dpr, dpr);
     };
-    
+
     setSize();
     const W = canvas.offsetWidth;
     const H = height;
-    
+
     const count = Math.min(Math.floor(W / 15), 65);
     const pts = Array.from({ length: count }, () => ({
       x: Math.random() * W,
@@ -31,11 +31,11 @@ export function NetworkCanvas({ height = 250, isDark = true }) {
       vy: (Math.random() - 0.5) * 0.45,
       r: Math.random() * 1.5 + 1.2
     }));
-    
+
     let raf;
     const draw = () => {
       ctx.clearRect(0, 0, W, H);
-      
+
       // Update coords
       pts.forEach(p => {
         p.x += p.vx;
@@ -43,7 +43,7 @@ export function NetworkCanvas({ height = 250, isDark = true }) {
         if (p.x < 0 || p.x > W) p.vx *= -1;
         if (p.y < 0 || p.y > H) p.vy *= -1;
       });
-      
+
       // Draw links
       const connectionDist = 110;
       pts.forEach((a, i) => {
@@ -61,7 +61,7 @@ export function NetworkCanvas({ height = 250, isDark = true }) {
           }
         });
       });
-      
+
       // Draw nodes
       pts.forEach(p => {
         ctx.beginPath();
@@ -69,16 +69,16 @@ export function NetworkCanvas({ height = 250, isDark = true }) {
         ctx.fillStyle = isDark ? `rgba(0, 255, 135, 0.45)` : `rgba(16, 185, 129, 0.45)`;
         ctx.fill();
       });
-      
+
       raf = requestAnimationFrame(draw);
     };
-    
+
     draw();
-    
+
     const handleResize = () => {
       if (canvas) setSize();
     };
-    
+
     window.addEventListener("resize", handleResize);
     return () => {
       cancelAnimationFrame(raf);
@@ -156,41 +156,67 @@ export function IDSFlowchart() {
   const [ref, vis] = useInView(0.2);
   const rows = [
     {
-      label: "Phase 1: Ingestion",
+      label: "Signature-Based IDS",
       items: [
-        { label: "IP Packets", desc: "Telemetric streams arrive" },
-        { label: "Traffic Logs", desc: "Consolidated system outputs" },
-        { label: "Feature Engine", desc: "Parameter vector extraction" },
+        {
+          label: "Known Attack Detection",
+          desc: "Detects attacks by matching known signatures or patterns."
+        },
+        {
+          label: "Fast & Accurate",
+          desc: "Works very efficiently against previously identified threats."
+        },
+        {
+          label: "Limitation",
+          desc: "Cannot detect new or unknown attacks."
+        }
       ],
       badgeColor: "var(--accent-member-2)",
-      cardBg: "var(--bg-secondary)"
     },
+
     {
-      label: "Phase 2: AI Check",
+      label: "Anomaly-Based IDS",
       items: [
-        { label: "Neural Pattern matching", desc: "Deep autoencoders screen logs" },
-        { label: "Baseline Contrast", desc: "Quantifies deviation metrics" },
-        { label: "Anomaly Rating", desc: "Calculate predictive severity" },
+        {
+          label: "Learns Normal Behavior",
+          desc: "Studies regular network activity and user behavior."
+        },
+        {
+          label: "Detects Unusual Activity",
+          desc: "Flags traffic that differs from normal patterns."
+        },
+        {
+          label: "Finds New Attacks",
+          desc: "Can identify zero-day and previously unseen threats."
+        }
       ],
       badgeColor: "#a855f7",
-      cardBg: "var(--bg-secondary)"
     },
+
     {
-      label: "Phase 3: Decision",
+      label: "Hybrid IDS",
       items: [
-        { label: "Secure Vector", desc: "Log telemetry and continue" },
-        { label: "Suspicious Frame", desc: "Isolate nodes for validation" },
-        { label: "Attack Block", desc: "SDN drops target IPs instantly" },
+        {
+          label: "Combines Both Methods",
+          desc: "Uses signature and anomaly detection together."
+        },
+        {
+          label: "Higher Accuracy",
+          desc: "Detects both known and unknown cyber attacks."
+        },
+        {
+          label: "Better Security",
+          desc: "Provides stronger protection with fewer missed threats."
+        }
       ],
       badgeColor: "var(--accent-member-5)",
-      cardBg: "var(--bg-secondary)"
     },
   ];
 
   return (
     <div ref={ref} style={{ margin: "48px 0" }}>
       <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", color: "var(--text-muted)", marginBottom: 24 }}>
-        Intrusion Detection Evaluation Matrix
+        Types of Intrusion Detection Systems (IDS)
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
         {rows.map((row, ri) => (
