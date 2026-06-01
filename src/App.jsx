@@ -156,8 +156,7 @@ export default function App() {
             <p style={{
               fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.8, maxWidth: 660, margin: "0 auto 48px"
             }}>
-              A comprehensive survey of telemetry-driven congestion prediction, autonomic self-healing frameworks, predictive scaling, and the rising horizon of adversarial threat models in network architectures.
-            </p>
+              A study of how AI is used in computer networks for traffic prediction, intrusion detection systems (IDS), self-scaling, and self-healing to make networks smarter, faster, and more secure.            </p>
           </Reveal>
 
           <Reveal delay={0.25}>
@@ -1003,8 +1002,8 @@ export default function App() {
             AI in Computer Networks
           </div>
           <div style={{ fontSize: 13, lineHeight: 1.8, fontWeight: 500 }}>
-            Research Seminar Paper · Computer Science Department · 2025<br />
-            Muhammad Moiz · Muhammad Ahtisham · Ahmad Bin Javed · Eman Shahid
+            Presentation · Software Engineering Department · 2026<br />
+            <b>Developed by: </b> Muhammad Moiz
           </div>
         </div>
         <div style={{ textAlign: "right", fontSize: 12, lineHeight: 1.8, fontWeight: 500 }}>

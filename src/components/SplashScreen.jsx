@@ -205,8 +205,7 @@ export default function SplashScreen({ onStart, theme }) {
             margin: "0 auto",
             lineHeight: 1.7
           }}>
-            An exhaustive analysis of telemetry-driven congestion mapping, automated self-healing, predictive auto-scaling, and active intelligence security matrices.
-          </p>
+            A study of how AI is used in computer networks for traffic prediction, intrusion detection systems (IDS), self-scaling, and self-healing to make networks smarter, faster, and more secure.          </p>
         </div>
 
         {/* Interactive Presenters Section Grid */}
